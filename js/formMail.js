@@ -6,25 +6,25 @@ $("#sendMail").on("click", function() {
 
     if(email == "")
     {
-        $(errorMess).text("Введите email");
+        $("#errorMess").text("Введите email");
         return false;
     } else if (name == "")
     {
-        $(errorMess).text("Введите имя");
+        $("#errorMess").text("Введите имя");
         return false;
     }
     else if (phone == "")
     {
-        $(errorMess).text("Введите телефон");
+        $("#errorMess").text("Введите телефон");
         return false;
     }
     else if (message.length < 5)
     {
-        $(errorMess).text("Введите сообщение не менее 5 символов");
+        $("#errorMess").text("Введите сообщение не менее 5 символов");
         return false;
     }
 
-    $(errorMess).text("");
+    $("#errorMess").text("");
 
     $.ajax({
         url: 'ajax/mail.php',
@@ -39,9 +39,13 @@ $("#sendMail").on("click", function() {
         success: function(data)
         {
             if(!data)
+            {
                 alert("Произошла ошибка, сообщение не отправлено");
+            }
             else
+            {
                 $("#mailForm").trigger("reset");
+            }
 
             $("#sendMail").prop("disabled", false);
         }
