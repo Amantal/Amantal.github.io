@@ -38,15 +38,7 @@ $("#sendMail").on("click", function() {
         },
         success: function(data)
         {
-            if(!data)
-            {
-                alert("Произошла ошибка, сообщение не отправлено");
-            }
-            else
-            {
-                $("#mailForm").trigger("reset");
-            }
-
+            alert(data);
             $("#sendMail").prop("disabled", false);
         }
     })
